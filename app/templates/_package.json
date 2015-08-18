@@ -1,0 +1,56 @@
+{
+  "name": "<%= websiteNameSlug %>",
+  "version": "0.1.0",
+  "description": "Static website",
+  "main": "index.html",
+  "repository": "<%= nickName + '/' + websiteNameSlug %>",
+  "scripts": {
+    "start": "gulp",
+    "test": "mocha test <% if (includeBabel) { %>--compilers js:babel/register<% } %>"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "author": {
+    "name": "<%= realName %>",
+    "email": "<%= email %>",
+    "url": "<%= githubUrl %>"
+  },
+  "license": "MIT",
+  "dependencies": {
+    <% if(includeNormalizeCss) { %>"normalize.css": "^3.0.3",<% } %>
+    <% if(includeIncludeMedia) { %>"include-media": "*",<% } %>
+    <% if(includeAnimateCss) { %>"animate.css": "^3.4.0",<% } %>
+    <% if(includeSusy) { %>"susy": "^2.2.5",<% } %>
+    <% if(includeJeet) { %>"jeet": "^6.1.2",<% } %>
+    <% if(includeBootstrap) { %>"bootstrap-sass": "^3.3.5",<% } %>
+    <% if(includeFoundation) { %>"foundation-sites": "^5.5.2",<% } %>
+    <% if(includePureCss) { %>"purecss": "^0.6.0",<% } %>
+    <% if(includeSemanticUi) { %>"semantic-ui-css": "^2.0.7",<% } %>
+    <% if(includeJquery) { %>"jquery": "^2.1.4",<% } %>
+    <% if(includeLodash) { %>"lodash": "^3.10.1",<% } %>
+    "browser-sync": "^2.8.2"
+  },
+  "devDependencies": {
+    <% if(includeBabel) { %>
+    "babel-core": "^5.8.21",
+    "babelify": "^6.1.3",<% } %>
+    "browserify": "^11.0.1",
+    "chai": "^3.2.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.6",
+    "mocha": "^2.2.5",
+    "node-notifier": "^4.2.3",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
