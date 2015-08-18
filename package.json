@@ -17,23 +17,20 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "babel-core": "^5.8.21",
     "chalk": "^1.1.0",
     "change-case": "^2.3.0",
     "fs-extra": "^0.23.1",
     "github": "^0.2.4",
-    "lodash.capitalize": "^3.0.0",
-    "underscore.string": "^3.1.1",
-    "yeoman-generator": "^0.19.0"
+    "yeoman-generator": "^0.19.0",
+    "yosay": "^1.0.5"
   },
   "devDependencies": {
-    "chai": "^3.2.0",
+    "babel-core": "^5.8.21",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.2.0",
     "gulp-plumber": "^1.0.1",
     "gulp-util": "^3.0.6",
     "mocha": "^2.2.5",
-    "mockery": "^1.4.0",
-    "yosay": "^1.0.5"
+    "mockery": "^1.4.0"
   }
 }
