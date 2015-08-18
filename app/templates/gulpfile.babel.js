@@ -6,6 +6,7 @@ import browserify from 'browserify';
 import browserSync from 'browser-sync';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
+<% if(includeLostGrid) { %>import lost from 'lost';<% } %>
 
 const $ = gulpLoadPlugins();
 const bs = browserSync.create();
@@ -38,7 +39,10 @@ gulp.task('styles', () => {
     .pipe($.plumber({ errorHandler: errorAlert }))
     .pipe($.sass({
       precision: 10
-    }))
+    }))<% if(includeLostGrid) { %>
+    .pipe($.postcss([
+      lost()
+    ]))<% } %>
     .pipe($.autoprefixer({
       browsers: ['last 2 versions', 'Android >= 4']
     }))

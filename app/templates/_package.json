@@ -24,6 +24,7 @@
     <% if(includeAnimateCss) { %>"animate.css": "^3.4.0",<% } %>
     <% if(includeSusy) { %>"susy": "^2.2.5",<% } %>
     <% if(includeJeet) { %>"jeet": "^6.1.2",<% } %>
+    <% if(includeLostGrid) { %>"lost": "^6.5.0",<% } %>
     <% if(includeBootstrap) { %>"bootstrap-sass": "^3.3.5",<% } %>
     <% if(includeFoundation) { %>"foundation-sites": "^5.5.2",<% } %>
     <% if(includePureCss) { %>"purecss": "^0.6.0",<% } %>
@@ -44,6 +45,7 @@
     "gulp-load-plugins": "^0.10.0",
     "gulp-minify-css": "^1.2.0",
     "gulp-plumber": "^1.0.1",
+    <% if(includeLostGrid) { %>"gulp-postcss": "^5.1.10",<% } %>
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.0.4",
     "gulp-uglify": "^1.2.0",

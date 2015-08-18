@@ -63,7 +63,7 @@ describe('generator-fe-stack', () => {
         .withPrompts({
           githubUser: 'johndoe',
           websiteName: 'john doe website',
-          cssAssets: [ 'includeNormalizeCss', 'includeIncludeMedia', 'includeAnimateCss', 'includeSusy', 'includeJeet', 'includeBootstrap', 'includeFoundation', 'includePureCss', 'includeSemanticUi' ],
+          cssAssets: [ 'includeNormalizeCss', 'includeIncludeMedia', 'includeAnimateCss', 'includeSusy', 'includeJeet', 'includeLostGrid', 'includeBootstrap', 'includeFoundation', 'includePureCss', 'includeSemanticUi' ],
           jsAssets: [ 'includeBabel', 'includeJquery', 'includeLodash' ]
         })
         .on('end', done);

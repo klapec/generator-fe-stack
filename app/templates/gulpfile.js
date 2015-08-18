@@ -5,6 +5,7 @@ var browserify = require('browserify');
 var bs = require('browser-sync').create();
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
+<% if(includeLostGrid) { %>var lost = require('lost');<% } %>
 
 var $ = gulpLoadPlugins();
 
@@ -37,7 +38,10 @@ gulp.task('styles', function() {
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       precision: 10
-    }))
+    }))<% if(includeLostGrid) { %>
+    .pipe($.postcss([
+      lost()
+    ]))<% } %>
     .pipe($.autoprefixer({
       browsers: ['last 2 versions', 'Android >= 4']
     }))

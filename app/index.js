@@ -124,6 +124,10 @@ var StaticGenerator = (function (_Base) {
               value: 'includeJeet',
               checked: false
             }, {
+              name: 'Lost Grid ' + _chalk2['default'].gray('(Powerful grid system built in PostCSS)'),
+              value: 'includeLostGrid',
+              checked: false
+            }, {
               name: 'Bootstrap ' + _chalk2['default'].gray('(Popular front-end framework)'),
               value: 'includeBootstrap',
               checked: false
@@ -151,6 +155,7 @@ var StaticGenerator = (function (_Base) {
             _this3.includeAnimateCss = hasFeature(answers, 'cssAssets', 'includeAnimateCss');
             _this3.includeSusy = hasFeature(answers, 'cssAssets', 'includeSusy');
             _this3.includeJeet = hasFeature(answers, 'cssAssets', 'includeJeet');
+            _this3.includeLostGrid = hasFeature(answers, 'cssAssets', 'includeLostGrid');
             _this3.includeBootstrap = hasFeature(answers, 'cssAssets', 'includeBootstrap');
             _this3.includeFoundation = hasFeature(answers, 'cssAssets', 'includeFoundation');
             _this3.includePureCss = hasFeature(answers, 'cssAssets', 'includePureCss');
@@ -236,9 +241,9 @@ var StaticGenerator = (function (_Base) {
       return {
         projectFiles: function projectFiles() {
           if (this.includeBabel) {
-            this.copy('gulpfile.babel.js', 'gulpfile.babel.js');
+            this.template('gulpfile.babel.js', 'gulpfile.babel.js');
           } else {
-            this.copy('gulpfile.js', 'gulpfile.js');
+            this.template('gulpfile.js', 'gulpfile.js');
           }
 
           this.template('_package.json', 'package.json');
