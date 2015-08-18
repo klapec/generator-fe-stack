@@ -24,7 +24,7 @@
     "change-case": "^2.3.0",
     "fs-extra": "^0.23.1",
     "github": "^0.2.4",
-    "yeoman-generator": "^0.19.0",
+    "yeoman-generator": "^0.20.2",
     "yosay": "^1.0.5"
   },
   "devDependencies": {

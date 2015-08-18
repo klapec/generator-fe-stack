@@ -1,4 +1,7 @@
 # generator-fe-stack
+![Build Status](https://codeship.com/projects/b857bb60-27db-0133-fc89-7af7072ae828/status?branch=master)
+
+[![Dependency Status](https://david-dm.org/klapec/generator-fe-stack.svg)](https://david-dm.org/klapec/generator-fe-stack)
 
 [Yeoman](http://yeoman.io) generator that scaffolds out a front-end stack
 
