@@ -246,7 +246,7 @@ var StaticGenerator = (function (_Base) {
           this.template('LICENSE.txt', 'LICENSE.txt');
           this.template('README.md', 'README.md');
 
-          this.copy('.gitignore', '.gitignore');
+          this.copy('.npmignore', '.gitignore');
           this.copy('.tern-project', '.tern-project');
           this.copy('browserconfig.xml', 'browserconfig.xml');
           this.copy('crossdomain.xml', 'crossdomain.xml');
