@@ -70,7 +70,8 @@ gulp.task('vendorScripts', function() {
     .pipe($.rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('dist/'));
+    .pipe(gulp.dest('dist/'))
+    .pipe(bs.stream());
 });
 
 gulp.task('build', ['styles', 'scripts', 'vendorScripts'], function() {
