@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     <% if(includeNormalizeCss) { %>"normalize.css": "^3.0.3",<% } %>
-    <% if(includeIncludeMedia) { %>"include-media": "*",<% } %>
+    <% if(includeIncludeMedia) { %>"include-media": "^1.4.1",<% } %>
     <% if(includeAnimateCss) { %>"animate.css": "^3.4.0",<% } %>
     <% if(includeSusy) { %>"susy": "^2.2.5",<% } %>
     <% if(includeJeet) { %>"jeet": "^6.1.2",<% } %>
