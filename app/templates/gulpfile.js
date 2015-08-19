@@ -75,4 +75,8 @@ gulp.task('vendorScripts', function() {
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('build', ['styles', 'scripts', 'vendorScripts']);
+gulp.task('build', ['styles', 'scripts', 'vendorScripts'], function() {
+  return gulp.src([assetsPaths.sass + 'app.scss', 'package.json'], { base: './' })
+    .pipe($.removeEmptyLines())
+    .pipe(gulp.dest('.'));
+});

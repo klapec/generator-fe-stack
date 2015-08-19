@@ -77,4 +77,8 @@ gulp.task('vendorScripts', () => {
     .pipe(bs.stream());
 });
 
-gulp.task('build', ['styles', 'scripts', 'vendorScripts']);
+gulp.task('build', ['styles', 'scripts', 'vendorScripts'], () => {
+  return gulp.src([assetsPaths.sass + 'app.scss', 'package.json'], { base: './' })
+    .pipe($.removeEmptyLines())
+    .pipe(gulp.dest('.'));
+});

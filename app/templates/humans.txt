@@ -3,8 +3,8 @@
 
 # TEAM
 
-    <%= realName %> -- Creator -- <%= email %>
+  <%= realName %> -- Creator -- <%= email %>
 
 # TECHNOLOGY COLOPHON
 
-    HTML5, CSS3, Sass, JavaScript
+  HTML5, CSS3, Sass, JavaScript
