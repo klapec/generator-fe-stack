@@ -35,7 +35,6 @@ gulp.task('default', function() {
 gulp.task('styles', function() {
   return gulp.src(assetsPaths.sass + 'app.scss')
     .pipe($.plumber({ errorHandler: errorAlert }))
-    .pipe($.sourcemaps.init())
     .pipe($.sass({
       precision: 10
     }))<% if(includeLostGrid) { %>
@@ -49,7 +48,6 @@ gulp.task('styles', function() {
     .pipe($.rename({
       suffix: '.min'
     }))
-    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('dist/'))
     .pipe(bs.stream());
 });
