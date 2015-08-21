@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var gulpLoadPlugins = require('gulp-load-plugins');
 var gutil = require('gulp-util');
 var browserify = require('browserify');
+var watchify = require('watchify');
 var bs = require('browser-sync').create();
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
@@ -19,18 +20,6 @@ function errorAlert(err) {
   gutil.log(gutil.colors.red(err.toString()));
   this.emit('end');
 }
-
-gulp.task('default', function() {
-  bs.init({
-    server: {
-      baseDir: './'
-    }
-  });
-
-  gulp.watch(assetsPaths.sass + '**/*', ['styles']);
-  gulp.watch(assetsPaths.scripts + '*.js', ['scripts']);
-  gulp.watch(assetsPaths.vendorScripts + '*.js', ['vendorScripts']);
-});
 
 gulp.task('styles', function() {
   return gulp.src(assetsPaths.sass + 'app.scss')
@@ -52,7 +41,7 @@ gulp.task('styles', function() {
     .pipe(bs.stream());
 });
 
-gulp.task('scripts', function() {
+gulp.task('browserify', function() {
   return browserify(assetsPaths.scripts + 'app.js')
     .bundle()
     .pipe(source('bundle.min.js'))
@@ -60,6 +49,24 @@ gulp.task('scripts', function() {
     .pipe($.uglify())
     .pipe(gulp.dest('dist/'))
     .pipe(bs.stream());
+});
+
+gulp.task('watchify', function() {
+  var bundler = watchify(browserify(assetsPaths.scripts + 'app.js', watchify.args));
+
+  function rebundle() {
+    return bundler.bundle()
+      .on('error', errorAlert)
+      .pipe(source('bundle.min.js'))
+      .pipe(buffer())
+      .pipe($.uglify())
+      .pipe(gulp.dest('dist/'))
+      .pipe(bs.stream());
+  }
+
+  bundler.on('update', rebundle);
+
+  return rebundle();
 });
 
 gulp.task('vendorScripts', function() {
@@ -74,7 +81,19 @@ gulp.task('vendorScripts', function() {
     .pipe(bs.stream());
 });
 
-gulp.task('build', ['styles', 'scripts', 'vendorScripts'], function() {
+gulp.task('default', ['watchify'], function() {
+  bs.init({
+    server: {
+      baseDir: './'
+    }
+  });
+
+  gulp.watch('*.html', bs.reload);
+  gulp.watch(assetsPaths.sass + '**/*', ['styles']);
+  gulp.watch(assetsPaths.vendorScripts + '*.js', ['vendorScripts']);
+});
+
+gulp.task('build', ['styles', 'vendorScripts', 'browserify'], function() {
   return gulp.src([assetsPaths.sass + 'app.scss', 'package.json'], { base: './' })
     .pipe($.removeEmptyLines())
     .pipe(gulp.dest('.'));
